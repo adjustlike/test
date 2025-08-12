@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自我介紹</title>
+<style>
+    /* === 全域變數設定 === */
+    :root {
+        --main-color: #FF44AA;      /* 主色系：亮粉紅 */
+        --text-color: #333333;      /* 一般文字顏色：深灰 */
+        --bg-color: #ffffff;        /* 網頁背景色：白色 */
+        --accent-color: #cc0077;    /* 輔助色：深粉紅 */
+        --max-width: 1000px;        /* 主要內容區最大寬度 */
+    }
+
+    /* === 頁面基本樣式 === */
+    body {
+        margin: 0;
+        font-family: "Noto Sans TC", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+
+    /* === 頁首 header 區域 === */
+    header {
+        background-color: var(--main-color);
+        text-align: center;
+        padding: 4rem 1rem 6rem; /* 預留底部空間讓浮動區塊不被擠壓 */
+        position: relative;
+    }
+
+    /* 浮動圓角矩形容器 */
+    .banner-card {
+        background-color: var(--bg-color);
+        display: inline-block;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 立體感陰影 */
+        position: absolute;
+        bottom: -60px; /* 往下超出 header */
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 80%;
+        max-width: 500px;
+    }
+
+    .banner-card img.profile {
+        max-width: 120px;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto 1rem;
+        border: 4px solid var(--main-color);
+    }
+
+    .banner-card h1 {
+        margin: 0;
+        font-size: 2rem;
+        color: var(--main-color);
+    }
+
+    .banner-card p {
+        font-size: 1.1rem;
+        color: var(--accent-color);
+        margin-top: 0.5rem;
+    }
+
+    /* === 主要內容 main 區域 === */
+    main {
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 6rem 1rem 2rem; /* 頂部預留空間給浮動卡片 */
+    }
+
+    section {
+        margin-bottom: 2.5rem;
+    }
+
+    h2 {
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent-color);
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    /* === 時間軸樣式 === */
+    ul.timeline {
+        list-style: none;
+        padding-left: 0;
+        position: relative;
+    }
+
+    ul.timeline::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--accent-color);
+    }
+
+    ul.timeline li {
+        margin: 1rem 0;
+        padding-left: 2.5rem;
+        position: relative;
+    }
+
+    ul.timeline li::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        background: var(--main-color);
+        border: 2px solid var(--bg-color);
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        top: 0.4rem;
+    }
+
+    /* === 作品集網格 === */
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .portfolio-item {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #f9f9f9;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .portfolio-item p {
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    /* === 頁尾 === */
+    footer {
+        background-color: var(--bg-color); /* 白色背景作為區隔 */
+        border-top: 3px solid var(--main-color); /* 與上方區塊區隔 */
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--text-color);
+    }
+
+    /* === 響應式設計 === */
+    @media (max-width: 600px) {
+        .banner-card {
+            padding: 1.5rem;
+        }
+        .banner-card h1 {
+            font-size: 1.5rem;
+        }
+        main {
+            padding: 7rem 1rem 2rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- header：頁首 -->
+    <header role="banner" aria-label="網站標題區">
+        <!-- 浮動圓角矩形 -->
+        <div class="banner-card" aria-label="個人資訊卡片">
+            <img src="https://picsum.photos/150" alt="個人照片" class="profile" aria-label="個人照片">
+            <h1 aria-label="姓名">王小明</h1>
+            <p aria-label="職稱">前端工程師 / 網頁設計師</p>
+        </div>
+    </header>
+
+    <!-- main：主要內容 -->
+    <main role="main">
+        <!-- 關於我 -->
+        <section aria-labelledby="about">
+            <h2 id="about">關於我</h2>
+            <p>您好！我是一位熱愛設計與程式開發的前端工程師，擅長以 HTML5 與 CSS3 打造優雅、響應式的網站，並關注使用者體驗與無障礙設計。</p>
+        </section>
+
+        <!-- 人生經歷 -->
+        <section aria-labelledby="life">
+            <h2 id="life">人生經歷</h2>
+            <ul class="timeline">
+                <li><strong>1995</strong> - 出生於台北</li>
+                <li><strong>2013</strong> - 高中畢業，開始自學程式設計</li>
+                <li><strong>2017</strong> - 完成資訊工程學士學位</li>
+                <li><strong>2018</strong> - 前往日本短期進修 UX 設計</li>
+                <li><strong>2022</strong> - 成立個人接案工作室</li>
+            </ul>
+        </section>
+
+        <!-- 工作經驗 -->
+        <section aria-labelledby="experience">
+            <h2 id="experience">工作經驗</h2>
+            <ul class="timeline">
+                <li><strong>2017-2019</strong> - 某科技公司擔任前端工程師，負責企業網站與內部系統開發</li>
+                <li><strong>2020-2021</strong> - 電商平台 UI/UX 設計與前端開發</li>
+                <li><strong>2022-至今</strong> - 自由接案，涵蓋品牌網站、個人部落格與作品集設計</li>
+            </ul>
+        </section>
+
+        <!-- 作品集 -->
+        <section aria-labelledby="portfolio">
+            <h2 id="portfolio">作品集</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <a href="enterprise.html">
+                        <img src="https://picsum.photos/400/300?random=1" alt="作品1">
+                    </a>
+                    <p>品牌形象網站設計</p>
+                </div>
+                <div class="portfolio-item">
+                    <a href="enterprise2.html" target="_blank" rel="noopener noreferrer">
+                        <img src="https://picsum.photos/400/300?random=2" alt="作品2">
+                    </a>
+                    <p>電子商務平台前端開發</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/400/300?random=3" alt="作品3">
+                    <p>旅遊部落格設計與開發</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://picsum.photos/400/300?random=4" alt="作品4">
+                    <p>互動式單頁應用網站</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer：頁尾 -->
+    <footer role="contentinfo">
+        &copy; 2025 王小明. 版權所有.
+    </footer>
+</body>
+
+  
+</html>
+
+  

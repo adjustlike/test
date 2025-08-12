@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電子商務平台</title>
+    <style>
+        :root {
+            --primary-color: #FF8888;
+            --text-color: #333;
+            --bg-color: #fff;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1rem;
+        }
+
+        header nav {
+            max-width: var(--max-width);
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: var(--max-width);
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .product-details {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 浮動泡泡容器，固定在瀏覽器右下角 */
+.floating-bubble {
+    position: fixed;        /* 固定位置，不隨滾動移動 */
+    bottom: 20px;           /* 距離視窗底部20px */
+    right: 20px;            /* 距離視窗右邊20px */
+    width: 100px;           /* 寬度100像素 */
+    height: 100px;          /* 高度100像素 */
+    background-color: #C10066; /* 主要色系背景色 */
+    border-radius: 50%;     /* 變成圓形 */
+    display: flex;          /* 使用Flexbox，方便置中 */
+    justify-content: center;/* 水平置中 */
+    align-items: center;    /* 垂直置中 */
+    cursor: pointer;        /* 滑鼠變成手指狀，表示可點擊 */
+    box-shadow: 0 4px 12px rgba(193, 0, 102, 0.5); /* 陰影效果 */
+    z-index: 1000;          /* 置頂，避免被其他元素蓋住 */
+    transition: background-color 0.3s ease; /* 漸變效果 */
+  }
+
+  /* 滑鼠移入泡泡時，背景顏色變深 */
+  .floating-bubble:hover {
+    background-color: #a00053;
+  }
+
+  /* SVG房子圖示設定尺寸與顏色 */
+  .floating-bubble svg {
+    width: 50px;            /* 寬度50像素 */
+    height: 50px;           /* 高度50像素 */
+    fill: white;            /* 填滿白色 */
+  }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <nav aria-label="主選單">
+            <div class="logo" aria-label="網站Logo"><strong>ShopLogo</strong></div>
+            <ul>
+                <li><a href="#" aria-current="page">首頁</a></li>
+                <li><a href="#">商品</a></li>
+                <li><a href="#">關於我們</a></li>
+                <li><a href="#">聯絡我們</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section aria-labelledby="products-title">
+            <h2 id="products-title">最新商品</h2>
+            <div class="product-grid">
+                <article class="product" aria-label="商品1">
+                    <img src="https://picsum.photos/400/300?random=1" alt="商品1圖片">
+                    <div class="product-details">
+                        <h3>商品名稱 1</h3>
+                        <p class="price">$1,000</p>
+                        <a href="#" class="btn" aria-label="購買商品1">加入購物車</a>
+                    </div>
+                </article>
+                <article class="product" aria-label="商品2">
+                    <img src="https://picsum.photos/400/300?random=2" alt="商品2圖片">
+                    <div class="product-details">
+                        <h3>商品名稱 2</h3>
+                        <p class="price">$1,500</p>
+                        <a href="#" class="btn" aria-label="購買商品2">加入購物車</a>
+                    </div>
+                </article>
+                <article class="product" aria-label="商品3">
+                    <img src="https://picsum.photos/400/300?random=3" alt="商品3圖片">
+                    <div class="product-details">
+                        <h3>商品名稱 3</h3>
+                        <p class="price">$2,000</p>
+                        <a href="#" class="btn" aria-label="購買商品3">加入購物車</a>
+                    </div>
+                </article>
+                <article class="product" aria-label="商品4">
+                    <img src="https://picsum.photos/400/300?random=4" alt="商品4圖片">
+                    <div class="product-details">
+                        <h3>商品名稱 4</h3>
+                        <p class="price">$2,500</p>
+                        <a href="#" class="btn" aria-label="購買商品4">加入購物車</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        &copy; 2025 電子商務平台. 版權所有.
+    </footer>
+</body>
+</html>
+<!--
+  a 標籤：點擊後導向 index.html，
+  target 屬性可省略，因為預設為同頁開啟，
+  aria-label 用於輔助工具描述此按鈕為首頁。
+-->
+<a href="index.html" class="floating-bubble" aria-label="首頁">
+    <!-- SVG 房子圖示 -->
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" >
+      <!-- 路徑定義房子外型 -->
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+  </a>
